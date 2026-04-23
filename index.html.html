@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omar Wali — Mechanical & Vehicle Engineering</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #f7f5f1;
+  --bg2: #f0ede7;
+  --border: #e2ddd6;
+  --border2: #d4cec5;
+  --text: #131210;
+  --muted: #888078;
+  --faint: #b8b2a8;
+  --accent: #e05c1a;
+  --accent2: #c04d10;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 3rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.01em; color: var(--text);
+}
+
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: 0.75rem; letter-spacing: 0.05em;
+  color: var(--muted); text-decoration: none;
+  font-weight: 400; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links .cv-btn {
+  background: var(--text); color: var(--bg);
+  padding: 0.45rem 1.1rem; font-size: 0.7rem;
+  font-weight: 500; letter-spacing: 0.07em;
+  transition: opacity 0.2s;
+}
+.nav-links .cv-btn:hover { opacity: 0.7; color: var(--bg); }
+
+/* ── HERO ── */
+.hero {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 88vh;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-left {
+  padding: 5rem 3rem 4rem;
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: auto;
+}
+.hero-tag::before {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--accent);
+  flex-shrink: 0;
+}
+
+.hero-main { margin: auto 0; }
+
+.hero-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3.2rem, 5.5vw, 5rem);
+  font-weight: 800; line-height: 0.97;
+  letter-spacing: -0.03em; color: var(--text);
+  margin-bottom: 1.75rem;
+}
+
+.hero-name span { color: var(--accent); }
+
+.hero-bio {
+  font-size: 0.9rem; color: var(--muted);
+  line-height: 1.85; font-weight: 300;
+  max-width: 420px;
+}
+.hero-bio strong { color: var(--text); font-weight: 500; }
+
+.hero-bottom {
+  display: flex; gap: 0.75rem;
+  margin-top: 3rem;
+}
+
+.btn-primary {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 500;
+  background: var(--text); color: var(--bg);
+  border: none; padding: 0.8rem 1.75rem;
+  cursor: pointer; letter-spacing: 0.03em;
+  transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.75; }
+
+.btn-outline {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.75rem; font-weight: 400;
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border2);
+  padding: 0.8rem 1.75rem;
+  cursor: pointer; letter-spacing: 0.03em;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-outline:hover { color: var(--text); border-color: var(--text); }
+
+/* hero right — stat grid */
+.hero-right {
+  display: grid; grid-template-rows: 1fr auto;
+}
+
+.hero-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-cell {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.stat-cell:nth-child(even) { border-right: none; }
+.stat-cell:nth-child(3),
+.stat-cell:nth-child(4) { border-bottom: none; }
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem; font-weight: 700;
+  color: var(--text); letter-spacing: -0.03em;
+  line-height: 1; margin-bottom: 0.4rem;
+}
+.stat-num.accent { color: var(--accent); }
+.stat-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faint);
+}
+
+.hero-position {
+  padding: 2rem 2.5rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.position-line {
+  display: flex; align-items: baseline; gap: 0.75rem;
+}
+.position-role {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem; font-weight: 600; color: var(--text);
+}
+.position-org {
+  font-size: 0.75rem; color: var(--muted); font-weight: 300;
+}
+.position-year {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; color: var(--faint); margin-left: auto;
+}
+
+/* ── SECTION BAR ── */
+.section-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 3rem;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.section-bar-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+}
+.section-bar-count {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; color: var(--faint);
+}
+
+/* ── PROJECT ROWS ── */
+.projects { border-bottom: 1px solid var(--border); }
+
+.project-row {
+  display: grid; grid-template-columns: 2.5rem 1fr 220px 2rem;
+  gap: 2rem; align-items: start;
+  padding: 2rem 3rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.15s;
+  text-decoration: none; color: inherit;
+}
+.project-row:last-child { border-bottom: none; }
+.project-row:hover { background: var(--bg2); }
+
+.proj-idx {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem; color: var(--faint);
+  padding-top: 0.3rem;
+}
+
+.proj-tags {
+  display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;
+}
+.tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.2rem 0.55rem; border-radius: 2px;
+}
+.tag-ms   { background: #feeaea; color: #b02020; }
+.tag-ev   { background: #e8f4fe; color: #1860a0; }
+.tag-fab  { background: #fef3e8; color: #a05010; }
+.tag-res  { background: #f0f0fe; color: #4040b0; }
+.tag-cad  { background: #eafaf0; color: #207040; }
+.tag-live { background: #fff8e8; color: #906010; }
+
+.proj-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--text); line-height: 1.3;
+  margin-bottom: 0.5rem; letter-spacing: -0.01em;
+}
+.proj-desc {
+  font-size: 0.78rem; color: var(--muted);
+  line-height: 1.78; font-weight: 300; max-width: 560px;
+}
+
+.proj-meta {
+  padding-top: 0.25rem;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem;
+}
+.proj-year {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem; color: var(--faint);
+}
+.proj-tools {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; color: var(--faint);
+  text-align: right; line-height: 2;
+}
+.proj-tools span { display: block; }
+
+.proj-arrow {
+  font-size: 1rem; color: var(--border2);
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block; padding-top: 0.25rem; align-self: center;
+}
+.project-row:hover .proj-arrow { color: var(--accent); transform: translateX(4px); }
+
+/* ── ABOUT + SKILLS ── */
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+}
+
+.about-left {
+  padding: 3rem; border-right: 1px solid var(--border);
+}
+.about-p {
+  font-size: 0.85rem; color: var(--muted);
+  line-height: 1.9; font-weight: 300; margin-bottom: 1.25rem;
+}
+.about-p strong { color: var(--text); font-weight: 500; }
+.about-p em { font-style: italic; }
+
+.about-links { display: flex; gap: 0.75rem; margin-top: 2rem; }
+
+.about-right { padding: 3rem; }
+
+.skills-heading {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--faint);
+  margin-bottom: 1.5rem;
+}
+
+.skill-row {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.skill-row:last-child { border-bottom: none; }
+.skill-name { font-size: 0.8rem; color: #444; font-weight: 400; }
+.skill-track {
+  width: 72px; height: 2px; background: var(--border);
+  position: relative; flex-shrink: 0;
+}
+.skill-fill {
+  position: absolute; top: 0; left: 0;
+  height: 100%; background: var(--accent);
+}
+
+/* ── EXPERIENCE STRIP ── */
+.exp-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+.exp-cell {
+  padding: 2rem 2.5rem;
+  border-right: 1px solid var(--border);
+}
+.exp-cell:last-child { border-right: none; }
+.exp-role {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--text); margin-bottom: 0.3rem;
+}
+.exp-org {
+  font-size: 0.75rem; color: var(--muted);
+  font-weight: 300; margin-bottom: 0.15rem;
+}
+.exp-period {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem; color: var(--faint); margin-bottom: 1rem;
+}
+.exp-dot { display: flex; gap: 0.5rem; align-items: flex-start; margin-bottom: 0.4rem; }
+.exp-dot::before {
+  content: '—'; font-size: 0.65rem; color: var(--accent);
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.exp-dot span { font-size: 0.75rem; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+/* ── FOOTER ── */
+footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 3rem;
+  border-top: 1px solid var(--border);
+}
+.footer-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; color: var(--faint); letter-spacing: 0.06em;
+}
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem; color: var(--faint);
+  text-decoration: none; letter-spacing: 0.06em;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--text); }
+
+/* ── FADE IN ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-left > * { animation: fadeUp 0.55s ease both; }
+.hero-tag    { animation-delay: 0.05s; }
+.hero-main   { animation-delay: 0.15s; }
+.hero-bottom { animation-delay: 0.25s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Omar Wali</div>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a class="cv-btn" href="mailto:omarwali729@gmail.com">Contact ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Motorsport &amp; Vehicle Engineering</div>
+    <div class="hero-main">
+      <h1 class="hero-name">Omar<br><span>Wali</span></h1>
+      <p class="hero-bio">
+        Structural engineering student at <strong>UC San Diego</strong> building toward a career in <strong>motorsport and high-performance vehicle engineering.</strong> I design, model, and fabricate — from steering geometry on a solar race car to published energy systems research. Sophomore. 4.0 GPA. Already doing the work.
+      </p>
+    </div>
+    <div class="hero-bottom">
+      <button class="btn-primary" onclick="window.location='mailto:omarwali729@gmail.com'">Get in Touch</button>
+      <button class="btn-outline" onclick="window.open('https://linkedin.com/in/omarwall')">LinkedIn ↗</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <div class="stat-num accent">4.0</div>
+        <div class="stat-label">GPA — UCSD</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Published papers</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">Soph.</div>
+        <div class="stat-label">BEng Structural Eng.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Industry internships</div>
+      </div>
+    </div>
+    <div class="hero-position">
+      <div class="position-line">
+        <span class="position-role">Mechanical Team</span>
+        <span class="position-org">Triton Solar Car — UCSD</span>
+        <span class="position-year">2025–now</span>
+      </div>
+      <div class="position-line">
+        <span class="position-role">Engineer Intern</span>
+        <span class="position-org">Center for Community Energy</span>
+        <span class="position-year">2026–now</span>
+      </div>
+      <div class="position-line">
+        <span class="position-role">Production &amp; Maintenance</span>
+        <span class="position-org">PepsiCo</span>
+        <span class="position-year">2024</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<div class="section-bar" id="projects">
+  <span class="section-bar-label">Engineering Projects</span>
+  <span class="section-bar-count">01 – 03</span>
+</div>
+
+<div class="projects">
+
+  <a class="project-row" href="#">
+    <span class="proj-idx">01</span>
+    <div>
+      <div class="proj-tags">
+        <span class="tag tag-ms">Motorsport</span>
+        <span class="tag tag-cad">CAD + FEA</span>
+        <span class="tag tag-fab">Fabrication</span>
+      </div>
+      <div class="proj-title">Ackermann Steering System — Triton Solar Car</div>
+      <div class="proj-desc">
+        Full design-to-fabrication cycle on the steering geometry for UCSD's American Solar Challenge race car. Led trade study between full and partial Ackermann configurations to minimise tyre scrub and turning radius. Modelled geometry in SolidWorks 2D/3D, validated with ANSYS FEA (55,338 psi worst-case), then fabricated steel and wooden steering plates via CNC waterjet and laser cutting. Assembled and installed the complete steering column and control module on the vehicle.
+      </div>
+    </div>
+    <div class="proj-meta">
+      <span class="proj-year">2025–2026</span>
+      <div class="proj-tools">
+        <span>SolidWorks</span>
+        <span>Fusion 360</span>
+        <span>ANSYS FEA</span>
+        <span>CNC / Waterjet</span>
+      </div>
+    </div>
+    <span class="proj-arrow">→</span>
+  </a>
+
+  <a class="project-row" href="#">
+    <span class="proj-idx">02</span>
+    <div>
+      <div class="proj-tags">
+        <span class="tag tag-ev">Solar / EV</span>
+        <span class="tag tag-res">Published</span>
+        <span class="tag tag-cad">AutoCAD</span>
+      </div>
+      <div class="proj-title">Solar PV Carport Feasibility Study — Humanitarian Infrastructure</div>
+      <div class="proj-desc">
+        Engineered a photovoltaic carport energy system for a humanitarian refugee camp. Performed full site and irradiance analysis from satellite data, developed an AutoCAD parking-lot layout optimising panel placement and spacing, and modelled annual energy output using seasonal performance data. Published in <em>Curieux Academic Journal</em> (pg. 278).
+      </div>
+    </div>
+    <div class="proj-meta">
+      <span class="proj-year">2023–2024</span>
+      <div class="proj-tools">
+        <span>AutoCAD</span>
+        <span>Irradiance modelling</span>
+        <span>Energy simulation</span>
+      </div>
+    </div>
+    <span class="proj-arrow">→</span>
+  </a>
+
+  <a class="project-row" href="#">
+    <span class="proj-idx">03</span>
+    <div>
+      <div class="proj-tags">
+        <span class="tag tag-res">Research</span>
+        <span class="tag tag-fab">Physical Testing</span>
+      </div>
+      <div class="proj-title">Rotor Swept Area Effects on Wind Turbine Power Output</div>
+      <div class="proj-desc">
+        Fabricated and tested variable-length 3D-printed rotors to investigate swept-area scaling on electrical power output. Correlated voltage and current measurements across rotor radii, achieving R² = 0.794. Benchmarked experimental efficiency trends against the Betz limit. Results confirmed nonlinear behaviour at low wind speeds consistent with literature.
+      </div>
+    </div>
+    <div class="proj-meta">
+      <span class="proj-year">2024–2025</span>
+      <div class="proj-tools">
+        <span>3D Printing</span>
+        <span>Logger Pro</span>
+        <span>MATLAB</span>
+        <span>Excel</span>
+      </div>
+    </div>
+    <span class="proj-arrow">→</span>
+  </a>
+
+</div>
+
+<!-- RESEARCH -->
+<div class="section-bar" id="research">
+  <span class="section-bar-label">Research &amp; Publications</span>
+  <span class="section-bar-count">3 papers</span>
+</div>
+
+<div class="projects">
+  <a class="project-row" href="#">
+    <span class="proj-idx">P1</span>
+    <div>
+      <div class="proj-tags">
+        <span class="tag tag-res">Published</span>
+        <span class="tag tag-ev">Solar</span>
+      </div>
+      <div class="proj-title">Solar PV Carport Solution for Humanitarian Aid — <em>Curieux Academic Journal</em></div>
+      <div class="proj-desc">Site geometry extraction, AutoCAD panel layout, seasonal energy simulation. Published pg. 278.</div>
+    </div>
+    <div class="proj-meta">
+      <span class="proj-year">2024</span>
+      <div class="proj-tools"><span>AutoCAD</span><span>Irradiance modelling</span></div>
+    </div>
+    <span class="proj-arrow">↗</span>
+  </a>
+  <a class="project-row" href="#">
+    <span class="proj-idx">P2</span>
+    <div>
+      <div class="proj-tags">
+        <span class="tag tag-res">Published</span>
+      </div>
+      <div class="proj-title">Experimental Validation of Rotor Swept Area Effects on Wind Turbine Power</div>
+      <div class="proj-desc">Variable-radius rotor fabrication, R² = 0.794 correlation, benchmarked vs. Betz limit.</div>
+    </div>
+    <div class="proj-meta">
+      <span class="proj-year">2025</span>
+      <div class="proj-tools"><span>3D Print</span><span>Logger Pro</span></div>
+    </div>
+    <span class="proj-arrow">↗</span>
+  </a>
+  <a class="project-row" href="#">
+    <span class="proj-idx">P3</span>
+    <div>
+      <div class="proj-tags">
+        <span class="tag tag-res">Published</span>
+      </div>
+      <div class="proj-title">Optimising Solar Panel Tilt Angle via Mathematical Modelling</div>
+      <div class="proj-desc">Calculus-based optimisation of monthly tilt angles using irradiance geometry and site latitude data.</div>
+    </div>
+    <div class="proj-meta">
+      <span class="proj-year">2025</span>
+      <div class="proj-tools"><span>MATLAB</span><span>Analytical modelling</span></div>
+    </div>
+    <span class="proj-arrow">↗</span>
+  </a>
+</div>
+
+<!-- ABOUT + SKILLS -->
+<div class="section-bar" id="about">
+  <span class="section-bar-label">About</span>
+</div>
+
+<div class="about-grid">
+  <div class="about-left">
+    <p class="about-p">
+      I'm <strong>Omar Wali</strong>, a sophomore at <strong>UC San Diego</strong> studying Structural Engineering — with every project, internship, and research paper pointed toward a career in <strong>motorsport and vehicle engineering.</strong>
+    </p>
+    <p class="about-p">
+      What drives me is the full cycle: the moment an idea goes from a sketch to a CAD model to a physical part on a real vehicle. Right now that's the steering system on UCSD's solar race car. Before that it was published research on energy systems. I'm building a toolkit that spans <em>structural analysis, CAD, fabrication, and systems thinking</em> — and I move fast.
+    </p>
+    <p class="about-p">
+      Sophomore standing. 4.0 GPA. Three internships. Three published papers. I'm looking for a summer role in vehicle engineering, chassis/suspension, or powertrain systems where I can contribute on day one.
+    </p>
+    <div class="about-links">
+      <button class="btn-primary" onclick="window.location='mailto:omarwali729@gmail.com'">omarwali729@gmail.com</button>
+      <button class="btn-outline" onclick="window.open('https://linkedin.com/in/omarwall')">LinkedIn ↗</button>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="skills-heading">Technical Skills</div>
+    <div class="skill-row">
+      <span class="skill-name">SolidWorks CAD + FEA</span>
+      <div class="skill-track"><div class="skill-fill" style="width:85%"></div></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-name">Fusion 360</span>
+      <div class="skill-track"><div class="skill-fill" style="width:80%"></div></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-name">ANSYS Mechanical</span>
+      <div class="skill-track"><div class="skill-fill" style="width:65%"></div></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-name">AutoCAD</span>
+      <div class="skill-track"><div class="skill-fill" style="width:75%"></div></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-name">CNC / Waterjet / Laser</span>
+      <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-name">MATLAB</span>
+      <div class="skill-track"><div class="skill-fill" style="width:70%"></div></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-name">Vehicle Dynamics fundamentals</span>
+      <div class="skill-track"><div class="skill-fill" style="width:60%"></div></div>
+    </div>
+    <div class="skill-row">
+      <span class="skill-name">Technical Writing / Research</span>
+      <div class="skill-track"><div class="skill-fill" style="width:90%"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section-bar" id="experience">
+  <span class="section-bar-label">Industry Experience</span>
+</div>
+
+<div class="exp-grid">
+  <div class="exp-cell">
+    <div class="exp-role">Engineer Intern</div>
+    <div class="exp-org">Center for Community Energy</div>
+    <div class="exp-period">Feb 2026 – Present</div>
+    <div class="exp-dot"><span>Designing commercial solar carport PV systems in Helioscope — layout, stringing, energy modelling</span></div>
+    <div class="exp-dot"><span>Dual-axis tracker layouts (Mechatron M18KD-20): GCR optimisation and shading analysis</span></div>
+    <div class="exp-dot"><span>Integrating EV chargers to reduce peak demand and improve grid efficiency</span></div>
+  </div>
+  <div class="exp-cell">
+    <div class="exp-role">Production &amp; Maintenance Intern</div>
+    <div class="exp-org">PepsiCo</div>
+    <div class="exp-period">July 2024</div>
+    <div class="exp-dot"><span>Mechanical and process analysis across maintenance, production, and chemical engineering teams</span></div>
+    <div class="exp-dot"><span>Evaluated system performance and proposed improvements for sustainability and operational efficiency</span></div>
+  </div>
+  <div class="exp-cell">
+    <div class="exp-role">Compliance Engineer Intern</div>
+    <div class="exp-org">Fly Dubai</div>
+    <div class="exp-period">April 2024</div>
+    <div class="exp-dot"><span>Analysed aircraft incident reports: mechanical, human-factors, and procedural causes</span></div>
+    <div class="exp-dot"><span>Documented engineering certification process for pre-flight inspection on commercial aircraft</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-id">Omar Wali — omarwali729@gmail.com — (858) 220-8206</span>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/omarwall">LinkedIn</a>
+    <a href="mailto:omarwali729@gmail.com">Email</a>
+  </div>
+</footer>
+
+</body>
+</html>
